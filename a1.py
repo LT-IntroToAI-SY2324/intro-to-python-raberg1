@@ -41,9 +41,14 @@ def factorial(n: int) -> int:
     Returns:
         factorial of the passed in number
     """
-    raise NotImplementedError("factorial")
+    # 4! = 4 * 3 * 2 * 1 or 1 * 2 * 3 * 4
+    result = 1
+    for x in range(1, n + 1):
+        # print(x)
+        result *= x
+    return result
 
-
+# print(factorial(4))
 T = TypeVar("T")
 
 

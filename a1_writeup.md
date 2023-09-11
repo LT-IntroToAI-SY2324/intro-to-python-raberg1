@@ -21,3 +21,6 @@ Python is awesome!!
 
 
 3. What are some things that you learned through this assignment?
+
+
+Grade: 10/10
