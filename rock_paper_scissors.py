@@ -37,6 +37,6 @@ def check_win(player, computer):
 
 
 choices = get_choices()
-print(choices)
+# print(choices)
 result = check_win(choices["player"], choices["computer"])
 print(result)
