@@ -95,7 +95,7 @@ def mean(lst: List[int]) -> float:
     Returns:
         the mean of the passed in list
     """
-    return sum_list(lst)/len(lst)
+    return sum_list(lst)/len(lst) if lst else 0
 
 
 def median(lst: List[int]) -> float:
@@ -137,8 +137,31 @@ def duck_duck_goose(lst: List[str]) -> List[str]:
     Returns:
         the resulting list after playing duck duck goose
     """
-    raise NotImplementedError("duck_duck_goose")
+    i = 0
+    current = "duck1"
+    while len(lst) > 2:
+        if current == "duck1":
+            current = "duck2"
+            i += 1
+        elif current == "duck2":
+            current = "goose"
+            i += 1
+        else: # current == "goose"
+            current = "duck1"
+            lst.pop(i)
+        
+        # wrap back around
+        i %= len(lst) # if i >= len(lst): i -= len(lst)
+    return lst
 
+    # alternate solution
+    # i = 0
+    # while len(lst) > 2:
+    #     i += 2
+    #     if i >= len(lst):
+    #         i -= len(lst)
+    #     lst.pop(i)
+    # return lst
 
 # this line causes the nested code to be skipped if the file is imported instead of run
 if __name__ == "__main__":
@@ -157,6 +180,11 @@ if __name__ == "__main__":
     assert median([1,2,3,4,5,6]) == 3.5, "median of [1,2,3,4,5,6] failed"
     
     names = ["roscoe", "kim", "woz", "solin", "law", "remess"]
+    # 1st pass - [roscoe, kim, solin, law, remess]
+    # 2nd pass - [roscoe, kim, solin, law]
+    # 3rd pass - [roscoe, kim, law]
+    # 4th pass - [roscoe, law]
+    print(duck_duck_goose(names))
     assert duck_duck_goose(names) == ["roscoe", "law"]
 
     print("All tests passed!")
